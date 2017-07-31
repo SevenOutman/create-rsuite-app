@@ -96,7 +96,7 @@ module.exports = class extends Generator {
             this.destinationPath('./.editorconfig')
         );
         this.fs.copy(
-            this.templatePath('./.gitignore'),
+            this.templatePath('./.npmignore'),
             this.destinationPath('./.gitignore')
         );
     }
