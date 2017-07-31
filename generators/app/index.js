@@ -1,4 +1,4 @@
-var Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
     constructor(args, opts) {
@@ -16,7 +16,7 @@ module.exports = class extends Generator {
 
     // 初始化阶段
     initializing() {
-
+        this.props = {};
     }
 
     // 接受用户输入阶段
@@ -33,13 +33,13 @@ module.exports = class extends Generator {
             name: 'description',
             message: 'Your project description',
             default: this.description
-        },{
+        }, {
             type: 'input',
             name: 'author',
             message: 'author',
-        },{
+        }, {
             type: 'input',
-            name: 'git repository',
+            name: 'repo',
             message: 'Your project git repository',
             default: this.description
         }, {
@@ -47,7 +47,7 @@ module.exports = class extends Generator {
             name: 'confirm',
             message: 'Would you like to create this project?'
         }]).then((answers) => {
-            
+            Object.assign(this.props, answers);
         });
     }
 
@@ -63,7 +63,21 @@ module.exports = class extends Generator {
 
     // 生成项目目录结构的阶段
     writing() {
-
+        let pkg = Object.assign({}, this.props)
+        this.fs.copy(
+            this.templatePath('./'),
+            this.destinationPath('./')
+        );
+        this.fs.copyTpl(
+            this.templatePath('package.json'),
+            this.destinationPath('package.json'),
+            {
+                name: pkg.name,
+                description: pkg.description,
+                author: pkg.author,
+                repo: pkg.repo
+            }
+        );
     }
 
     // 统一处理冲突，如要生成的文件已经存在是否覆盖等处理
