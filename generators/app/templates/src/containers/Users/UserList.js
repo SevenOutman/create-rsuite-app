@@ -1,4 +1,3 @@
-import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -7,10 +6,11 @@ import { UserTable } from '../../components/Users';
 
 
 function mapState2Props(state) {
+  const currentStatus = state.store.users;
   return {
-    data: state.store.users.data,
-    page: state.store.users.page,
-    status: state.store.users.status
+    data: currentStatus.data,
+    page: currentStatus.page,
+    status: currentStatus.status
   };
 }
 

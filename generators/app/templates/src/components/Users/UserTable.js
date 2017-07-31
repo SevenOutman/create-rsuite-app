@@ -3,15 +3,8 @@ import PropTypes from 'prop-types';
 import {
   Dropdown
 } from 'rsuite';
-import {
-  Table,
-  Column,
-  Cell,
-  HeaderCell
-} from 'rsuite-table';
+import { Cell } from 'rsuite-table';
 import { FormattedMessage } from 'react-intl';
-
-import { TableResizeHoc } from '../../hoc';
 import PageTitleBar from '../../components/PageTitleBar';
 import TableView from '../TableView';
 import {
@@ -25,18 +18,24 @@ import {
 import chain from '../../utils/createChainedFunction';
 
 const propTypes = {
-  data: React.PropTypes.array,
-  status: React.PropTypes.string,
-  onFetchRepos: React.PropTypes.func,
-  //table默认高度
-  tableDefaultHeight: React.PropTypes.number.isRequired,
-  //框架的高度用于计算 table的高度
-  frameHeight: React.PropTypes.number.isRequired,
+  data: PropTypes.array,
+  status: PropTypes.string,
+  onFetchRepos: PropTypes.func,
+  // table默认高度
+  tableDefaultHeight: PropTypes.number.isRequired,
+  // 框架的高度用于计算 table的高度
+  frameHeight: PropTypes.number.isRequired,
+  page: PropTypes.object,
+  onFetchUsers: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
   tableDefaultHeight: 400,
   frameHeight: 140
+};
+
+const contextTypes = {
+  intl: PropTypes.object.isRequired,
 };
 
 class UserTable extends Component {
@@ -67,7 +66,6 @@ class UserTable extends Component {
     });
   }
   getSystemRoleFilterComponent() {
-    const { params } = this.state;
     let items = [
       <Dropdown.Item key={1} eventKey="ALL" >全部</Dropdown.Item>,
       <Dropdown.Item key={2} eventKey="ROLE_USER" >用户</Dropdown.Item>,
@@ -91,7 +89,7 @@ class UserTable extends Component {
 
   }
 
-  getTableViewColumns() {
+  getTableViewColumns = () => {
     let cols = [
       {
         lable: 'ID',
@@ -104,7 +102,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: '状态',
+        label: <FormattedMessage id="status" />,
         cell: <StatusCell dataKey="status" />
       },
       {
@@ -114,7 +112,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: 'username',
+        label: <FormattedMessage id="username" />,
         cell: <Cell dataKey="name" />
       },
       {
@@ -123,7 +121,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: 'email',
+        label: <FormattedMessage id="email" />,
         cell: <Cell dataKey="email" />
       },
       {
@@ -132,7 +130,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: '用户组',
+        label: <FormattedMessage id="userGroup" />,
         cell: <ObjectCell dataKey="group.name" />
       },
       {
@@ -141,7 +139,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: '创建者',
+        label: <FormattedMessage id="creator" />,
         cell: <ObjectCell dataKey="creator.name" />
       },
       {
@@ -150,7 +148,7 @@ class UserTable extends Component {
           sortable: true,
           resizable: true
         },
-        label: '创建时间',
+        label: <FormattedMessage id="createDatetime" />,
         cell: <DateTimeCell dataKey="createTime" />
       },
     ];
@@ -167,8 +165,8 @@ class UserTable extends Component {
     return cols;
   }
 
-  handleChangeSystemRole(key) {
-    alert('SELECT' + key);
+  handleChangeSystemRole = (key) => {
+    alert(`SELECT ${key}`);
   }
 
   loadTableData = (params) => {
@@ -177,26 +175,29 @@ class UserTable extends Component {
   }
 
   render() {
-    const { data, status } = this.props;
+    const { data } = this.props;
 
     return (
       <div className="page-content">
-        <PageTitleBar title="userList"></PageTitleBar>
+        <PageTitleBar title="userList" />
         <TableView
-          cacheKey='user.table'
+          cacheKey="user.table"
           data={data}
           options={this.getTableOptions()}
           filterPlugins={this.getFilterPlugins()}
           columns={this.getTableViewColumns()}
           onLoadData={this.loadTableData}
-          ref={ref => this.table = ref}
+          ref={(ref) => {
+            this.table = ref;
+          }}
         />
       </div>
     );
   }
-};
+}
 
 UserTable.propTypes = propTypes;
 UserTable.defaultProps = defaultProps;
+UserTable.contextTypes = contextTypes;
 
 export default UserTable;

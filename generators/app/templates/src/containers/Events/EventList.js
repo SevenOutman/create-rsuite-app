@@ -1,4 +1,3 @@
-import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -7,9 +6,10 @@ import { EventTable } from '../../components/Events';
 
 
 function mapState2Props(state) {
+  const currentStatus = state.store.events;
   return {
-    data: state.store.events.data,
-    status: state.store.events.status
+    data: currentStatus.data,
+    status: currentStatus.status
   };
 }
 
