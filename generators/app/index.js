@@ -68,6 +68,11 @@ module.exports = class extends Generator {
             this.templatePath('./'),
             this.destinationPath('./')
         );
+
+        // this.fs.copy(
+        //     this.templatePath('./.*'),
+        //     this.destinationRoot()
+        // );
         this.fs.copyTpl(
             this.templatePath('package.json'),
             this.destinationPath('package.json'),
@@ -77,6 +82,22 @@ module.exports = class extends Generator {
                 author: pkg.author,
                 repo: pkg.repo
             }
+        );
+        this.fs.copy(
+            this.templatePath('./.eslintrc.js'),
+            this.destinationPath('./.eslintrc.js')
+        );
+        this.fs.copy(
+            this.templatePath('./.babelrc'),
+            this.destinationPath('./.babelrc')
+        );
+        this.fs.copy(
+            this.templatePath('./.editorconfig'),
+            this.destinationPath('./.editorconfig')
+        );
+        this.fs.copy(
+            this.templatePath('./.gitignore'),
+            this.destinationPath('./.gitignore')
         );
     }
 
