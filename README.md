@@ -31,6 +31,7 @@ npm run build
 ```
 
 ## 脚手架介绍
+>由于当前 Rsuite 的 React 版本还未更新到 15以后，为了兼容性考虑，脚手架的 React 版本采用了 react@0.14.9。即保留了 react@15以后的 class 语法，又兼容了 低版本的 Rsuite 框架。
 脚手架启用了 `eslint`、`less`、`redux`、`react-router`、`react-router-redux`、`react-intl`、`react-redux` 等依赖和配置。在使用该脚手架时，要确保对前面提到的知识有所了解。
 
 
