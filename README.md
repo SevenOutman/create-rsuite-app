@@ -1,5 +1,5 @@
 # create-rsuite-app
-`create-rsuite-app` 是用于快速创建基于 [Rsuite](https://rsuitejs.com) + React + Redux + React-Router 为模板的脚手架，能让你快读得搭建功能完善的后台框架。
+`create-rsuite-app` 是用于快速创建基于 [Rsuite](https://rsuitejs.com) + React + Redux + React-Router 为模板的脚手架，能让你快速搭建功能完善的后台框架。
 
 [在线 DEMO](https://rsuitejs.com/rsuite-example-admin/#/events?_k=kew5mz)
 ## 用法
