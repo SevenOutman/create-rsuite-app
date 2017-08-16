@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/create-rsuite-app.svg)](https://www.npmjs.com/package/create-rsuite-app)
+[![npm](https://img.shields.io/npm/v/generator-create-rsuite-app.svg)](https://www.npmjs.com/package/generator-create-rsuite-app)
 # create-rsuite-app
 `create-rsuite-app` 是用于快速创建基于 [Rsuite](https://rsuitejs.com) + React + Redux + React-Router 为模板的脚手架，能让你快速搭建功能完善的后台框架。
 
