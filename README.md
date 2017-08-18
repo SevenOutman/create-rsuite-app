@@ -65,5 +65,6 @@ npm run build
 ├── webpack.config.js
 └── webpack.dev.config.js
 ```
-
+### Table 数据列表组件
+脚手架封装了 `TableView` 组件，方便使用 Table 数据列表。具体参照 `src/components/Users` 模块下的用法。
 
