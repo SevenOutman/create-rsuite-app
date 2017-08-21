@@ -101,7 +101,7 @@ class UserTable extends Component {
   getTableViewColumns = () => {
     let cols = [
       {
-        lable: 'ID',
+        label: 'ID',
         primary: true,
       },
       {
