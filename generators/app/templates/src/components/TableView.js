@@ -387,7 +387,7 @@ class TableView extends Component {
             align="center"
             fixed
           >
-            <HeaderCell></HeaderCell>
+            <HeaderCell>{column.label}</HeaderCell>
             <OrderCell
               page={params.page || 0}
               pagesize={params.pagesize || 0}
