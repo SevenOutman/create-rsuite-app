@@ -37,6 +37,9 @@ export const OrderCell = ({ rowData, dataKey, ...props }) => {
   );
 };
 
+// 序号的别名，避免系统中有 Order 模型，名称会混淆
+export const SerialCell = OrderCell;
+
 export const ObjectCell = ({ rowData = {}, dataKey, ...props }) => {
   let keys = dataKey.split('.');
   keys.map((key) => {
