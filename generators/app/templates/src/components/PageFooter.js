@@ -9,9 +9,10 @@ const propTypes = {
 class PageFooter extends Component {
   render() {
     const classes = classNames('footer', this.props.className);
+    const year = (new Date).getFullYear();
     return (
       <div className={classes}>
-        <span className="copyright">&copy; COPYRIGHT HYPERS 2016</span>
+        <span className="copyright">&copy; COPYRIGHT HYPERS {year}</span>
       </div>
     );
   }
