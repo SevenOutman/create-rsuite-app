@@ -35,8 +35,8 @@ const propTypes = {
 };
 
 const contextTypes = {
-  user: React.PropTypes.object,
-  page: React.PropTypes.number
+  user: PropTypes.object,
+  page: PropTypes.number
 };
 
 class CustomTablePagination extends Component {

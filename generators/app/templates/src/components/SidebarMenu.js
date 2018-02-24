@@ -16,7 +16,7 @@ const defaultProps = {
 };
 
 const contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 class SidebarMenu extends Component {
